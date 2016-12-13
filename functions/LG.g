@@ -1,5 +1,3 @@
-# Read("d:/D/Algebra/Кватернионы/LG.txt");
-
 # LG1
 LG1:=function(L)
 local i, j, I, Stop;

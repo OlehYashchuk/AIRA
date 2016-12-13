@@ -9,13 +9,9 @@ Read("d:/D/Algebra/Кватернионы/mult.txt");
 q8:=SmallGroup(8,4);
 # Elements(SmallGroup(8,4));
 q:=AsList(q8);
-L:=[0,1,2];
+L:=[0,1];
 # Cartesian product
 LQ:=Cartesian(q, L); 
-# Combinations(LQ,2);
-# Combinations(LQ,2);
-
-# NrCombinations([1..24], 2);
 
 # All possible combinations
 Comb:=[];
@@ -40,27 +36,22 @@ for i in [1..Length(Comb)] do
 	fi;
 od;
 
-# count:=0;
-# for i in [1..Length(SubGroup)] do
-	# score:=0;
-	# for j in [1..Length(SubGroup[i])] do
-		# # Print(i, ". j = ", j, "\n");
-		# for k in [1..Length(LQ)] do
-			# if mult(mult(LQ[k], SubGroup[i][j]), [LQ[k][1]^(-1), LQ[k][2]]) in SubGroup[i] then
-				# score:=score+1;
-			# fi;
-			# # Print("     k = ", k, " | score = ", score, "\n");
-		# od;
-	# od;
-	# # Print(i, ". j*k = ", Length(SubGroup[i])*Length(LQ), "\n");
-	# # Print(i, ". score = ", score, "\n");
-	# if score = j*k then
-		# count:=count+1;
-		# Print(i,". ",SubGroup[i],"\n");
-	# fi;
-# od;
-
-# mult(mult(LQ[1], SubGroup[34][3]), [LQ[1][1]^(-1), LQ[1][2]]) in SubGroup[34];
-
-# AppendTo(output,"sum = ",sum,";");
-# CloseStream(output);
+count:=0;
+for i in [1..Length(SubGroup)] do
+	score:=0;
+	for j in [1..Length(SubGroup[i])] do
+		# Print(i, ". j = ", j, "\n");
+		for k in [1..Length(LQ)] do
+			if mult(mult(LQ[k], SubGroup[i][j]), [LQ[k][1]^(-1), LQ[k][2]]) in SubGroup[i] then
+				score:=score+1;
+			fi;
+			# Print("     k = ", k, " | score = ", score, "\n");
+		od;
+	od;
+	# Print(i, ". j*k = ", Length(SubGroup[i])*Length(LQ), "\n");
+	# Print(i, ". score = ", score, "\n");
+	if score = j*k then
+		count:=count+1;
+		Print(i,". ",SubGroup[i],"\n");
+	fi;
+od;
