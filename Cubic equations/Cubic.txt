@@ -1,0 +1,26 @@
+F:=List(ZmodpZ(3));
+ZrElmt:=Zero(F)[1];
+solve:=[];
+
+for x in F do
+	k:=0;
+	for a in F do
+		for b in F do
+			for c in F do
+				for d in F do
+					if (not((a=ZrElmt) and (b=ZrElmt) and (c=ZrElmt) and (d=ZrElmt))) then
+						if (a*x^3+b*x^2+c*x+d=ZrElmt) then
+							k:=k+1;
+						fi;
+					fi;
+				od;
+			od;
+		od;
+	od;
+	if (k = Factorial(Length(F))) then
+		Add(solve, x);
+	fi;
+od;
+solve;
+
+Read("/home/user/Yashchuk/My/GAP/Cubic.txt");

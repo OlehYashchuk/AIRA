@@ -1,0 +1,68 @@
+Read("/home/user/Yashchuk/My/GAP/consol_colored.txt");
+
+# output := OutputTextFile("/home/user/Yashchuk/My/GAP/Cubic_mat_result.txt", true);
+
+order:=2;
+Obj:=ZmodpZ(order);
+ZrElmt:=Zero(Obj);
+OneElmt:=One(Obj);
+# E_mat:=DiagonalMat([OneElmt, OneElmt, OneElmt]);
+E_mat:=IdentityMat(3, OneElmt);
+Theta_mat:=NullMat(3,3,ZrElmt);
+k := 0;
+n := 0;
+
+F:=List(Obj);
+solve:=[];
+A_list:=[];
+
+for x in F do
+	# k:=0;
+	for a1 in F do
+	for a2 in F do
+	for a3 in F do
+		for b1 in F do
+		for b2 in F do
+		for b3 in F do
+			for c1 in F do
+			for c2 in F do
+			for c3 in F do
+				n := n + 1;
+				A:=[[a1,a2,a3],[b1,b2,b3],[c1,c2,c3]];
+				# if ((A*A+A+E_mat)=Theta_mat) then
+				# if ((A*A*A+A*A+E_mat)=Theta_mat) then
+				if ((A*A*A+A+E_mat)=Theta_mat) then
+					if (not(\in(A, A_list))) then
+						k := k + 1;
+						Print("\n", k, ".");
+						Print(A);
+						# AppendTo(output, k, ",", A, "\n");
+						# Append(A_list, A);
+						# tmp := Sort(A_list);
+						# A_list := tmp;
+					fi;
+				fi;
+			od;
+			od;
+			od;
+		od;
+		od;
+		od;
+	od;
+	od;
+	od;
+	# if (k = Factorial(Length(F))) then
+	# 	Add(solve, x);
+	# fi;
+od;
+
+# CloseStream(output);
+
+Print("\n");
+Print(n);
+Print("\n");
+Print(k);
+
+# Print(solve);
+
+# Read("/home/user/Yashchuk/My/GAP/Cubic_mat.txt");

@@ -1,0 +1,12 @@
+LoadPackage("GAPDoc");
+timeSHOWMIN := 100;
+ColorPrompt(true, rec(
+   # usually cyan bold, see ?TextAttr
+   MarkupStdPrompt := Concatenation(TextAttr.bold, TextAttr.6),
+   MarkupContPrompt := Concatenation(TextAttr.bold, TextAttr.6),
+   PrePrompt := function()
+     # show the 'time' automatically if at least timeSHOWMIN
+     if CPROMPT() = "gap> " and time >= timeSHOWMIN then
+       Print("Time of last command: ", time, " ms\n");
+     fi;
+   end));
